@@ -7,6 +7,9 @@ const randomTime = (min, max) => Math.floor(Math.random() * ((max*1000)-(min*100
     const response = `Time: ${(time/1000).toFixed(2)}s | ${message}`;
 
     return new Promise((resolve, rejected) => {
+
+        if(typeof message !== 'string') rejected(new Error(`Failed to connect or bad connection.`));
+
         setTimeout(() => {
             resolve(response);
         }, time); 
@@ -14,17 +17,19 @@ const randomTime = (min, max) => Math.floor(Math.random() * ((max*1000)-(min*100
     
 }
 
-responseTimeSimulation("Conected 1").then(response => {
+responseTimeSimulation("Conecting to database").then(response => {
     console.log(response);        
-    return responseTimeSimulation("Conected 2"); 
+    return responseTimeSimulation("Conected to data base");
 }).then(response => {
     console.log(response);
-    return responseTimeSimulation("Conected 3");
+    return responseTimeSimulation("Search data"); 
 }).then(response=> {
     console.log(response);
-    return responseTimeSimulation("Conected 4çç");
+    return responseTimeSimulation(1);
 }).then(response => {
     console.log(response);
-}).catch();
+}).catch( err => {
+    console.log(err)
+});
  
 
