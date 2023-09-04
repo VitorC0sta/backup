@@ -30,7 +30,7 @@ async function loadPage(event) {
 
     try {
         if(response.status !== 200) throw new Error(response.status);
-        const insertHTML = loadHTML(html);
+        loadHTML(html);
 
     } catch (err) {
         loadHTML(`<h1>${err}</h1>`);
